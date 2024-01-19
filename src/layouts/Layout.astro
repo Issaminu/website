@@ -1,4 +1,6 @@
 ---
+import GradientBackground from "../components/GradientBackground.tsx";
+
 interface Props {
   title: string;
 }
@@ -20,6 +22,8 @@ const { title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
+    <GradientBackground client:idle />
+
     <slot />
   </body>
 </html>
@@ -31,11 +35,11 @@ const { title } = Astro.props;
   html {
     font-family: inter, system-ui, sans-serif;
     background: #212121;
-    background-size: 224px;
-    margin-right: 30%;
-    margin-left: 30%;
+    /* background-size: 224px; */
     color: #d2d4d5;
+    cursor: default;
   }
+
   code {
     font-family:
       Menlo,
