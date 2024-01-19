@@ -1,6 +1,9 @@
 import React from "react";
 import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
 import { useEffect } from "react";
+import * as reactSpring from "@react-spring/three";
+import * as drei from "@react-three/drei";
+import * as fiber from "@react-three/fiber";
 
 const GradientBackground = () => {
   const [visibility, setVisibility] = React.useState("hidden");
@@ -14,17 +17,46 @@ const GradientBackground = () => {
 
   return (
     <ShaderGradientCanvas
+      importedFiber={{ ...fiber, ...drei, ...reactSpring }}
       style={{
         position: "absolute",
         top: 0,
-        visibility: visibility,
         zIndex: -1,
         pointerEvents: "none",
       }}
     >
       <ShaderGradient
+        type="waterPlane"
+        animate="on"
+        uTime={7.9}
+        uSpeed={0.3}
+        uStrength={1}
+        uDensity={1.2}
+        uFrequency={0}
+        uAmplitude={0}
+        positionX={0}
+        positionY={0}
+        positionZ={0}
+        rotationX={0}
+        rotationY={0}
+        rotationZ={0}
+        color1="#145580"
+        color2="#0065ca"
+        color3="#1e1e21"
+        reflection={0}
+        wireframe={false}
+        shader="defaults"
+        cAzimuthAngle={0}
+        cPolarAngle={80}
+        cDistance={2.8}
+        cameraZoom={9.1}
+        lightType="3d"
+        brightness={0.6}
+        envPreset="dawn"
+        grain="off"
+        zoomOut={false}
+        toggleAxis={false}
         control="query"
-        urlString="https://www.shadergradient.co/customize?animate=on&axesHelper=off&bgColor1=%23000000&bgColor2=%23000000&brightness=0.6&cAzimuthAngle=0&cDistance=2.8&cPolarAngle=80&cameraZoom=9.1&color1=%23145580&color2=%230065ca&color3=%231e1e21&destination=onCanvas&embedMode=off&envPreset=dawn&format=gif&fov=45&frameRate=10&gizmoHelper=hide&grain=off&lightType=3d&pixelDensity=0.2&positionX=0&positionY=0&positionZ=0&range=disabled&rangeEnd=40&rangeStart=0&reflection=0&rotationX=0&rotationY=0&rotationZ=0&shader=defaults&toggleAxis=false&type=waterPlane&uAmplitude=0&uDensity=1.2&uFrequency=0&uSpeed=0.3&uStrength=1&uTime=7.9&wireframe=false&zoomOut=false"
       />
     </ShaderGradientCanvas>
   );
