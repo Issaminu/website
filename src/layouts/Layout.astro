@@ -1,5 +1,6 @@
 ---
 import GradientBackground from "../components/GradientBackground.tsx";
+import SpeedInsights from "@vercel/speed-insights/astro";
 
 interface Props {
   title: string;
@@ -12,6 +13,8 @@ const { title } = Astro.props;
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <title>{title}</title>
+    <meta name="title" content={title} />
     <meta
       name="description"
       content="Issam Boubcher is a Software Engineering and Distributed Computed Systems student at ENSET."
@@ -19,42 +22,41 @@ const { title } = Astro.props;
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />
-    <title>{title}</title>
+    <SpeedInsights />
   </head>
   <body>
     <GradientBackground client:idle />
-
     <slot />
+    <style is:global>
+      @font-face {
+        font-family: inter;
+        src: url(/fonts/Inter-VariableFont_slnt,wght.ttf);
+      }
+      html {
+        font-family: inter, system-ui, sans-serif;
+        background: #212121;
+        /* background-size: 224px; */
+        color: #d2d4d5;
+        cursor: default;
+      }
+      ::selection {
+        background-color: #004576;
+      }
+      .my-name::selection {
+        color: white;
+      }
+
+      code {
+        font-family:
+          Menlo,
+          Monaco,
+          Lucida Console,
+          Liberation Mono,
+          DejaVu Sans Mono,
+          Bitstream Vera Sans Mono,
+          Courier New,
+          monospace;
+      }
+    </style>
   </body>
 </html>
-<style is:global>
-  @font-face {
-    font-family: inter;
-    src: url(/fonts/Inter-VariableFont_slnt,wght.ttf);
-  }
-  html {
-    font-family: inter, system-ui, sans-serif;
-    background: #212121;
-    /* background-size: 224px; */
-    color: #d2d4d5;
-    cursor: default;
-  }
-  ::selection {
-    background-color: #004576;
-  }
-  .my-name::selection {
-    color: white;
-  }
-
-  code {
-    font-family:
-      Menlo,
-      Monaco,
-      Lucida Console,
-      Liberation Mono,
-      DejaVu Sans Mono,
-      Bitstream Vera Sans Mono,
-      Courier New,
-      monospace;
-  }
-</style>
