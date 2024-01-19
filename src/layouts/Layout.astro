@@ -39,6 +39,12 @@ const { title } = Astro.props;
     color: #d2d4d5;
     cursor: default;
   }
+  ::selection {
+    background-color: #004576;
+  }
+  .my-name::selection {
+    color: white;
+  }
 
   code {
     font-family:
