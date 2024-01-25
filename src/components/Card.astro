@@ -1,31 +1,51 @@
 ---
+import { Icon } from "astro-icon/components";
 import { Image } from "astro:assets";
 import OpenJournal from "../assets/open journal screenshot.png";
 interface Props {
   title: string;
   body: string;
-  href: string;
+  hrefDemo: string;
+  hrefGithub: string;
   stack: string[];
 }
 
-const { title, body, href, stack } = Astro.props;
+const { title, body, hrefDemo, hrefGithub, stack } = Astro.props;
 ---
 
 <li
-  class="h-fit group rounded-xl shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 hover:scale-105 transition duration-300 ease-in-out hover:cursor-pointer"
+  class="h-fit group rounded-xl shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out hover:cursor-pointer"
 >
-  <a href={href} class="flex flex-row h-full">
+  <a href={hrefGithub} class="flex flex-row h-full" target="_blank">
     <Image
       class="rounded-lg w-64 h-full"
       src={OpenJournal}
-      alt="Screenshot of The Open Journal website"
+      alt=`Screenshot of ${title} website`
     />
     <div class="ml-4 flex flex-col justify-between w-full">
       <div class="">
-        <h2 class="text-2xl font-semibold silver-gradient">The Open Journal</h2>
+        <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
         <p>The open blog of the Internet.</p>
+        <div class="mt-2 flex flex-row gap-3 w-full">
+          <!-- <a href={hrefGithub} class="unstyled"> -->
+          <button
+            class="w-fit text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
+          >
+            <Icon name="github" class="group-hover:fill-white h-5 w-5" />
+            Source Code
+          </button>
+          <!-- </a> -->
+          <!-- <a href={hrefDemo} class="unstyled"> -->
+          <button
+            class="w-fit text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
+          >
+            <Icon name="external-link" class="group-hover:fill-white h-5 w-5" />
+            View Demo
+          </button>
+          <!-- </a> -->
+        </div>
       </div>
-      <div class="flex flex-wrap gap-2 mt-4">
+      <div class="flex flex-wrap gap-2">
         <span class="text-sm">Stack:</span>
         {
           stack.map((item) => (

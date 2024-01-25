@@ -57,30 +57,16 @@ const { title } = Astro.props;
 
       .silver-gradient {
         background-image: linear-gradient(to right, var(--tw-gradient-stops));
-        --tw-gradient-from: #d1d5db var(--tw-gradient-from-position);
-        --tw-gradient-to: rgb(209 213 219 / 0) var(--tw-gradient-to-position);
-        --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-        --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
-        --tw-gradient-stops: var(--tw-gradient-from),
-          #fff var(--tw-gradient-via-position), var(--tw-gradient-to);
-        --tw-gradient-via-position: 5%;
-        --tw-gradient-to: #6b7280 var(--tw-gradient-to-position);
-        background-clip: text;
-        color: transparent;
-      }
-
-      .silver-gradient-light {
-        background-image: linear-gradient(to right, var(--tw-gradient-stops));
         --tw-gradient-from: #fff var(--tw-gradient-from-position);
         --tw-gradient-to: rgb(255 255 255 / 0) var(--tw-gradient-to-position);
         --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
-        --tw-gradient-to: #bbbdc2 var(--tw-gradient-to-position);
+        --tw-gradient-via-position: 5%;
+        --tw-gradient-to: #9ca3af var(--tw-gradient-to-position);
         background-clip: text;
         color: transparent;
       }
 
-      .silver-gradient::selection,
-      .silver-gradient-light::selection {
+      .silver-gradient::selection {
         color: white;
       }
 
