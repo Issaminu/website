@@ -1,8 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
-import { Icon } from "astro-icon/components";
 import Layout from "../layouts/Layout.astro";
+import NavItem from "../components/NavItem.astro";
 ---
 
 <Layout title="Issam Boubcher | Distributed Computing Systems student">
@@ -49,72 +49,27 @@ import Layout from "../layouts/Layout.astro";
         reflections the world around me, and the little gems I find on the
         internet.
       </p>
-    </div>
-    <div
-      class="flex flex-row justify-between sm:justify-start sm:gap-8 items-center mt-12"
-    >
-      <!-- <span
-        class="text-gray-400 font-semibold text-lg flex flex-col sm:flex-row items-center sm:gap-1 cursor-progress"
-        title="Coming soon ..."
-        ><Icon name="newspaper" class="hover:fill-white" />Blog</span
-      > -->
-      <!-- <a
-        href=""
-        class="font-semibold group gap-1 text-lg transform hover:scale-110 transition-transform duration-300 flex justify-start"
+      <div
+        class="flex flex-row justify-between sm:justify-start sm:gap-8 items-center mt-6"
       >
-        <span
-          class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1"
-          ><Icon name="code" class="group-hover:fill-white" />Projects</span
-        ></a
-      > -->
-      <a
-        href="https://twitter.com/Issaminuu"
-        target="_blank"
-        class="items-center gap-1 group font-semibold text-lg transform hover:scale-110 transition-transform duration-300 flex justify-start"
-      >
-        <span
-          class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1"
-          ><Icon name="twitter" class="group-hover:fill-white" />Twitter</span
-        >
-        <div class="align-top h-full hidden md:flex">
-          <Icon
-            name="external-link"
-            class="mt-1 w-3 h-3 invisible group-hover:visible hover:fill-cyan-700"
-          />
-        </div>
-      </a>
-      <a
-        href="https://github.com/Issaminu"
-        target="_blank"
-        class="items-center gap-1 group font-semibold text-lg transform hover:scale-110 transition-transform duration-300 flex justify-start"
-      >
-        <span
-          class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1"
-          ><Icon name="github" class="group-hover:fill-white" />GitHub</span
-        >
-        <div class="align-top h-full hidden md:flex">
-          <Icon
-            name="external-link"
-            class="mt-1 w-3 h-3 invisible group-hover:visible hover:fill-cyan-700"
-          />
-        </div>
-      </a>
-      <a
-        href="https://www.linkedin.com/in/issam-boubcher/"
-        target="_blank"
-        class="items-center gap-1 group font-semibold text-lg transform hover:scale-110 transition-transform duration-300 flex justify-start"
-      >
-        <span
-          class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1"
-          ><Icon name="linkedin" class="group-hover:fill-white" />LinkedIn</span
-        >
-        <div class="align-top h-full hidden md:flex">
-          <Icon
-            name="external-link"
-            class="mt-1 w-3 h-3 invisible group-hover:visible hover:fill-cyan-700"
-          />
-        </div>
-      </a>
+        <NavItem name="Blog" icon="newspaper" href="/blog" />
+        <NavItem name="Projects" icon="code" href="/projects" />
+        <NavItem
+          name="Twitter"
+          icon="twitter"
+          href="https://twitter.com/Issaminuu"
+        />
+        <NavItem
+          name="GitHub"
+          icon="github"
+          href="https://github.com/Issaminu"
+        />
+        <NavItem
+          name="LinkedIn"
+          icon="linkedin"
+          href="https://www.linkedin.com/in/issam-boubcher/"
+        />
+      </div>
     </div>
   </main>
 </Layout>
