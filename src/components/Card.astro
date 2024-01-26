@@ -14,45 +14,51 @@ const { title, body, hrefDemo, hrefGithub, stack } = Astro.props;
 ---
 
 <li
-  class="h-fit group rounded-xl shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out hover:cursor-pointer"
+  class="h-fit group rounded-xl flex flex-col md:flex-row shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out"
 >
-  <a href={hrefGithub} class="flex flex-row h-full" target="_blank">
-    <Image
-      class="rounded-lg w-64 h-full"
-      src={OpenJournal}
-      alt=`Screenshot of ${title} website`
-    />
-    <div class="ml-4 flex flex-col justify-between w-full">
-      <div class="">
-        <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
-        <p>The open blog of the Internet.</p>
-        <div class="mt-2 flex flex-row gap-3 w-full">
-          <!-- <a href={hrefGithub} class="unstyled"> -->
+  <!-- <a href={hrefGithub} class="flex flex-row h-full" target="_blank"> -->
+  <Image
+    class="rounded-lg md:w-64 h-full"
+    src={OpenJournal}
+    alt=`Screenshot of ${title} website`
+  />
+  <div class="pl-2 md:pl-3 mt-2 md:mt-0 flex flex-col justify-between w-full">
+    <div class="">
+      <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
+      <p>{body}</p>
+      <div
+        class="mt-3 mb-2 md:mt-2 flex flex-row justify-around md:justify-normal w-full gap-3 sm:gap-6 md:gap-3 sm:pr-3 md:pr-0"
+      >
+        <a
+          href={hrefGithub}
+          target="_blank"
+          class="w-full md:w-fit h-12 md:h-fit"
+        >
           <button
-            class="w-fit text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
+            class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
           >
-            <Icon name="github" class="group-hover:fill-white h-5 w-5" />
+            <Icon name="github" class="group-hover:fill-white h-4 w-4" />
             Source Code
           </button>
-          <!-- </a> -->
-          <!-- <a href={hrefDemo} class="unstyled"> -->
+        </a>
+        <a
+          href={hrefDemo}
+          target="_blank"
+          class="w-full md:w-fit h-12 md:h-fit"
+        >
           <button
-            class="w-fit text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
+            class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
           >
-            <Icon name="external-link" class="group-hover:fill-white h-5 w-5" />
             View Demo
+            <Icon name="external-link" class="group-hover:fill-white h-4 w-4" />
           </button>
-          <!-- </a> -->
-        </div>
-      </div>
-      <div class="flex flex-wrap gap-2">
-        <span class="text-sm">Stack:</span>
-        {
-          stack.map((item) => (
-            <span class="text-sm text-[#a0aec0]">{item}</span>
-          ))
-        }
+        </a>
       </div>
     </div>
-  </a>
+    <div class="flex flex-wrap gap-2">
+      <span class="text-sm">Stack:</span>
+      {stack.map((item) => <span class="text-sm text-[#a0aec0]">{item}</span>)}
+    </div>
+  </div>
+  <!-- </a> -->
 </li>
