@@ -15,7 +15,7 @@ const GradientBackground = () => {
   return (
     <ShaderGradientCanvas
       style={{
-        position: "absolute",
+        position: "fixed",
         top: 0,
         zIndex: -1,
         visibility: visibility,
