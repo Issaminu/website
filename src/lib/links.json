@@ -32,7 +32,7 @@
   "prisma": "https://www.prisma.io",
   "auth0": "https://auth0.com",
   "lucia": "https://lucia-auth.com",
-  "nextauth": "https://next-auth.js.org",
+  "nextauthjs": "https://next-auth.js.org",
   "nextui": "https://nextui.org",
   "vscode": "https://code.visualstudio.com",
   "reactnative": "https://reactnative.dev",
