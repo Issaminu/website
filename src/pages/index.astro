@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
 import OpenJournal from "../assets/open journal screenshot.png";
 import MiniProjet from "../assets/mini projet screenshot.png";
+import PhoneJobing from "../assets/phone jobing screenshot.png";
+import SkylineApp from "../assets/skyline screenshot.png";
 import Layout from "../layouts/Layout.astro";
 import NavItem from "../components/NavItem.astro";
 import Card from "../components/Card.astro";
@@ -74,23 +76,56 @@ import Card from "../components/Card.astro";
             thumbnail={OpenJournal}
             hrefDemo="https://open-journal.issaminu.com"
             hrefGithub="https://github.com/Issaminu/open-journal"
-            stack={["TypeScript", "React", "Next.js"]}
+            stack={[
+              "TypeScript",
+              "React",
+              "Next.js",
+              "Prisma",
+              "PostgreSQL",
+              "Vercel",
+            ]}
           />
           <Card
             title="Mini Projet"
             body="A hotel management application."
             thumbnail={MiniProjet}
-            hrefDemo="https://mini-projet-tan.vercel.app"
             hrefGithub="https://github.com/Issaminu/mini-projet"
-            stack={["TypeScript", "React", "Next.js", "PostgreSQL"]}
+            stack={[
+              "TypeScript",
+              "React",
+              "Next.js",
+              "NextAuth.js",
+              "PostgreSQL",
+            ]}
+          />
+          <Card
+            title="Skyline App"
+            body="A hotel management application."
+            thumbnail={SkylineApp}
+            hrefGithub="https://github.com/Issaminu/skyline-app"
+            stack={[
+              "JavaScript",
+              "React",
+              "Next.js",
+              "Prisma",
+              "Auth0",
+              "MySQL",
+            ]}
           />
           <Card
             title="Phone Jobing"
             body="A telephone sales management application."
-            thumbnail={MiniProjet}
+            thumbnail={PhoneJobing}
             hrefDemo="https://phone-jobing.issaminu.com"
             hrefGithub="https://github.com/Issaminu/PhoneJobing"
-            stack={["PHP", "Laravel", "MySQL"]}
+            stack={[
+              "PHP",
+              "Laravel",
+              "JavaScript",
+              "MySQL",
+              "Amazon S3",
+              "Railway",
+            ]}
           />
         </ul>
       </div>
