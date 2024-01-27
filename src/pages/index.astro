@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
+import OpenJournal from "../assets/open journal screenshot.png";
+import MiniProjet from "../assets/mini projet screenshot.png";
 import Layout from "../layouts/Layout.astro";
 import NavItem from "../components/NavItem.astro";
 import Card from "../components/Card.astro";
@@ -18,7 +20,7 @@ import Card from "../components/Card.astro";
           class="rounded-full w-24 h-24"
         />
         <div class="flex flex-col justify-center">
-          <h1 class="text-4xl font-bold w-fit silver-gradient">
+          <h1 class="text-4xl font-bold w-fit silver-gradient drop-shadow-2xl">
             Issam Boubcher
           </h1>
           <p class="text-gray-400 text-lg font-light">
@@ -69,9 +71,26 @@ import Card from "../components/Card.astro";
           <Card
             title="The Open Journal"
             body="The open blog of the Internet."
+            thumbnail={OpenJournal}
             hrefDemo="https://open-journal.issaminu.com"
             hrefGithub="https://github.com/Issaminu/open-journal"
             stack={["TypeScript", "React", "Next.js"]}
+          />
+          <Card
+            title="Mini Projet"
+            body="A hotel management application."
+            thumbnail={MiniProjet}
+            hrefDemo="https://mini-projet-tan.vercel.app"
+            hrefGithub="https://github.com/Issaminu/mini-projet"
+            stack={["TypeScript", "React", "Next.js", "PostgreSQL"]}
+          />
+          <Card
+            title="Phone Jobing"
+            body="A telephone sales management application."
+            thumbnail={MiniProjet}
+            hrefDemo="https://phone-jobing.issaminu.com"
+            hrefGithub="https://github.com/Issaminu/PhoneJobing"
+            stack={["PHP", "Laravel", "MySQL"]}
           />
         </ul>
       </div>
