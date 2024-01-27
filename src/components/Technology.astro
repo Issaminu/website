@@ -1,55 +1,15 @@
 ---
-import { Icon } from "astro-icon/components";
-
 interface Props {
   name: string;
 }
+import { Icon } from "astro-icon/components";
+import links from "../lib/links.json";
 const { name } = Astro.props;
 const iconName = name.toLowerCase().replace(/\./g, "").replace(/\ /g, "");
-
-const links: { [key: string]: string } = {
-  astro: "https://astro.build",
-  nextjs: "https://nextjs.org",
-  svelte: "https://svelte.dev",
-  react: "https://react.dev",
-  tailwindcss: "https://tailwindcss.com",
-  css: "https://developer.mozilla.org/en-US/docs/Web/CSS",
-  html: "https://developer.mozilla.org/en-US/docs/Web/HTML",
-  vercel: "https://vercel.com",
-  php: "https://php.net",
-  laravel: "https://laravel.com",
-  shadcnui: "https://ui.shadcn.com",
-  railway: "https://railway.app",
-  go: "https://golang.org",
-  typescript: "https://www.typescriptlang.org",
-  javascript: "https://www.javascript.com",
-  python: "https://www.python.org",
-  java: "https://www.java.com",
-  langchain: "https://langchain.org",
-  rust: "https://www.rust-lang.org",
-  mysql: "https://www.mysql.com",
-  mongodb: "https://www.mongodb.com",
-  redis: "https://redis.io",
-  postgresql: "https://www.postgresql.org",
-  sqlite: "https://www.sqlite.org",
-  docker: "https://www.docker.com",
-  cloudflare: "https://www.cloudflare.com",
-  aws: "https://aws.amazon.com",
-  azure: "https://azure.microsoft.com",
-  gcp: "https://cloud.google.com",
-  amazons3: "https://aws.amazon.com/s3",
-  prisma: "https://www.prisma.io",
-  auth0: "https://auth0.com",
-  nextauth: "https://next-auth.js.org",
-  nextui: "https://nextui.org",
-  vscode: "https://code.visualstudio.com",
-  reactnative: "https://reactnative.dev",
-  nodejs: "https://nodejs.org",
-  spring: "https://spring.io",
-};
+const technologies: { [key: string]: string } = links;
 ---
 
-<a href={links[iconName]} target="_blank">
+<a href={technologies[iconName]} target="_blank">
   <div
     class="bg-gray-800/40 hover:bg-gray-800 transition ease-in duration-200 font-medium px-2 md:px-1 py-0.5 md:text-xs rounded-md border border-sky-900 flex align-middle items-center justify-center"
   >
