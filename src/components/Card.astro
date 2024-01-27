@@ -5,7 +5,7 @@ import Technology from "./Technology.astro";
 interface Props {
   title: string;
   body: string;
-  hrefDemo: string;
+  hrefDemo?: string;
   hrefGithub: string;
   stack: string[];
   thumbnail: ImageMetadata;
@@ -15,53 +15,78 @@ const { title, body, hrefDemo, hrefGithub, stack, thumbnail } = Astro.props;
 ---
 
 <li
-  class="h-fit group rounded-xl flex flex-col md:flex-row shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out"
+  class="h-fit group rounded-xl shadow-lg border-2 border-sky-800/50 px-4 py-4 backdrop-blur-2xl bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out"
 >
-  <Image
-    class="rounded-lg md:w-64 h-full"
-    src={thumbnail}
-    alt=`Screenshot of ${title} website`
-  />
-  <div class="pl-2 md:pl-3 mt-2 md:mt-0 flex flex-col justify-between w-full">
-    <div class="">
-      <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
-      <p>{body}</p>
+  <div class="flex flex-col md:flex-row h-full">
+    {
+      hrefDemo?
+      (
+        <a
+          href={hrefDemo}
+          target="_blank"
+          class="md:min-w-64 h-fit md:hover:scale-105 transition duration-300 ease-in-out"
+        >
+          <Image
+            class="rounded-lg md:w-64 h-full"
+            src={thumbnail}
+            alt=`Screenshot of ${title} website`
+          />
+        </a>
+      ):(
+      <Image
+      class="rounded-lg md:w-64 h-full"
+      src={thumbnail}
+      alt=`Screenshot of ${title} website`
+       />
+      )
+    }
+   
+    <div class="mt-2 md:mt-0 flex flex-col justify-between min-h-full w-full">
+      <div class="pl-2 md:pl-3">
+        <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
+        <p class="md:pl-1 mt-1 md:mr-3">{body}</p>
+      </div>
       <div
-        class="mt-3 md:mt-2 flex flex-row justify-around md:justify-normal w-full gap-3 sm:gap-6 md:gap-3 pr-1 sm:pr-3 md:pr-0"
+        class=`md:pl-3 mt-3 md:mt-2 flex flex-row justify-around md:justify-between w-full gap-3 sm:gap-4 md:gap-3`
       >
         <a
           href={hrefGithub}
           target="_blank"
-          class="w-full md:w-fit h-12 md:h-fit"
+          class={`${
+            hrefDemo ? " w-full" : "min-w-full"
+          } md:w-full h-12 md:h-fit`}
         >
           <button
-            class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
+            class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 transition duration-300 ease-in-out text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
           >
             <Icon name="github" class="group-hover:fill-white h-4 w-4" />
             Source Code
           </button>
         </a>
-        <a
-          href={hrefDemo}
-          target="_blank"
-          class="w-full md:w-fit h-12 md:h-fit"
-        >
-          <button
-            class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50"
-          >
-            View Demo
-            <Icon name="external-link" class="group-hover:fill-white h-4 w-4" />
-          </button>
-        </a>
+        {
+          hrefDemo && (
+            <a
+              href={hrefDemo}
+              target="_blank"
+              class="w-full md:w-full h-12 md:h-fit"
+            >
+              <button class="w-full h-full text-center text-xs sm:text-sm bg-gray-800/40 hover:bg-gray-800 transition duration-300 ease-in-out text-white flex flex-row justify-center items-center gap-2 rounded-lg px-4 py-2 border border-sky-900/50">
+                View Demo
+                <Icon
+                  name="external-link"
+                  class="group-hover:fill-white h-4 w-4"
+                />
+              </button>
+            </a>
+          )
+        }
       </div>
     </div>
-    <div class="flex flex-row gap-1 mt-5 md:mt-3">
-      <span class="md:text-sm h-fit mr-2 md:mr-0 pt-0.5 md:pt-0 font-medium"
-        >Stack:</span
-      >
-      <div class="flex flex-wrap w-full gap-2 md:gap-1">
-        {stack.map((item) => <Technology name={item} />)}
-      </div>
-    </div>
+  </div>
+  <div class="flex flex-row gap-2 md:gap-1 mt-5 md:mt-3 flex-wrap">
+    <span class="md:text-sm h-fit mr-2 md:mr-0 pt-0.5 md:pt-0 font-medium"
+      >Stack:</span
+    >
+    {stack.map((item) => <Technology name={item} />)}
   </div>
 </li>
