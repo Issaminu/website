@@ -16,9 +16,12 @@ const isExternal = href.startsWith("https");
       target="_blank"
       class="items-center group font-semibold text-lg gap-1 transform hover:scale-110 transition-transform duration-300 flex justify-start"
     >
-      <span class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
-        <Icon name={icon} class="group-hover:fill-white" />
-        {name}
+      <span class="text-gray-200 sm:text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
+        <Icon
+          name={icon}
+          class="group-hover:fill-white h-10 w-10 sm:h-4 sm:w-4"
+        />
+        <span class="hidden sm:inline-block">{name}</span>
       </span>
       <div class="w-0 invisible group-hover:visible">
         <Icon name="external-link" class="w-3 h-3 hover:fill-cyan-700" />
@@ -27,11 +30,15 @@ const isExternal = href.startsWith("https");
   ) : (
     <a
       href={href}
-      class="font-semibold group gap-1 text-lg transform hover:scale-110 transition-transform duration-300 flex justify-start"
+      target="_blank"
+      class="items-center group font-semibold text-lg gap-1 transform hover:scale-110 transition-transform duration-300 flex justify-start"
     >
-      <span class="text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
-        <Icon name={icon} class="group-hover:fill-white" />
-        {name}
+      <span class="text-gray-200 sm:text-gray-400 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
+        <Icon
+          name={icon}
+          class="group-hover:fill-white h-10 w-10 sm:h-4 sm:w-4"
+        />
+        <span class="hidden sm:inline-block">{name}</span>
       </span>
     </a>
   )
