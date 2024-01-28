@@ -27,14 +27,14 @@ const { title, body, hrefDemo, hrefGithub, stack, thumbnail } = Astro.props;
           class="md:min-w-64 h-fit md:hover:scale-105 transition duration-300 ease-in-out"
         >
           <Image
-            class="rounded-lg md:w-64 h-full"
+            class="rounded-lg md:w-64 h-full shadow-2xl"
             src={thumbnail}
             alt=`Screenshot of ${title} website`
           />
         </a>
       ):(
       <Image
-      class="rounded-lg md:w-64 h-full"
+      class="rounded-lg md:w-64 h-full shadow-md"
       src={thumbnail}
       alt=`Screenshot of ${title} website`
        />
