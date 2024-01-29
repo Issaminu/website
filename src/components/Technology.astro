@@ -9,7 +9,7 @@ const iconName = name.toLowerCase().replace(/\./g, "").replace(/\ /g, "");
 const technologies: { [key: string]: string } = links;
 ---
 
-<a href={technologies[iconName]} target="_blank">
+<a href={technologies[iconName]} target="_blank" class="w-fit inline">
   <div
     class="bg-gray-800/40 hover:bg-gray-800 transition ease-in duration-200 font-medium px-2 md:px-1 py-0.5 md:text-xs rounded-md border border-sky-900 flex align-middle items-center justify-center"
   >
