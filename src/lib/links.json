@@ -37,5 +37,8 @@
   "vscode": "https://code.visualstudio.com",
   "reactnative": "https://reactnative.dev",
   "nodejs": "https://nodejs.org",
-  "spring": "https://spring.io"
+  "spring": "https://spring.io",
+  "chromadb": "https://www.trychroma.com",
+  "beautifulsoup": "https://www.crummy.com/software/BeautifulSoup/bs4/doc",
+  "openai": "https://openai.com"
 }
