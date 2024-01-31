@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
 import OpenJournal from "../assets/open journal screenshot.png";
-import MiniProjet from "../assets/mini projet screenshot.png";
+import EnsetGPT from "../assets/EnsetGPT screenshot.png";
 import PhoneJobing from "../assets/phone jobing screenshot.png";
 import SkylineApp from "../assets/skyline screenshot.png";
 import Layout from "../layouts/Layout.astro";
@@ -20,6 +20,7 @@ import Card from "../components/Card.astro";
           src={IssaminuLogo}
           alt="Issaminu's logo"
           class="rounded-full w-24 h-24"
+          format="avif"
         />
         <div class="flex flex-col justify-center">
           <h1 class="text-4xl font-bold w-fit silver-gradient drop-shadow-2xl">
@@ -69,6 +70,19 @@ import Card from "../components/Card.astro";
       <div class="mt-4">
         <ul class="space-y-4">
           <Card
+            title="EnsetGPT"
+            body="A CLI chatbot for conversing & asking questions about all things ENSET."
+            thumbnail={EnsetGPT}
+            hrefGithub="https://github.com/Issaminu/EnsetGPT"
+            stack={[
+              "Python",
+              "LangChain",
+              "OpenAI",
+              "ChromaDB",
+              "Beautiful Soup",
+            ]}
+          />
+          <Card
             title="The Open Journal"
             body="An open space for anyone to express their thoughts on the internet."
             thumbnail={OpenJournal}
@@ -83,7 +97,7 @@ import Card from "../components/Card.astro";
               "Vercel",
             ]}
           />
-          <Card
+          <!-- <Card
             title="Mini Projet"
             body="A simple hotel management application for a school mini-project."
             thumbnail={MiniProjet}
@@ -95,7 +109,7 @@ import Card from "../components/Card.astro";
               "NextAuth.js",
               "PostgreSQL",
             ]}
-          />
+          /> -->
           <Card
             title="Skyline App"
             body="A living space co-ownership application for facilitating shared arrangements."
@@ -106,13 +120,13 @@ import Card from "../components/Card.astro";
               "React",
               "Next.js",
               "Prisma",
-              "Auth0",
               "MySQL",
+              "Auth0",
             ]}
           />
           <Card
             title="Phone Jobing"
-            body="A fully-featured telephone sales plateform."
+            body="A fully-featured telephone sales plateform for call centers."
             thumbnail={PhoneJobing}
             hrefDemo="https://phone-jobing.issaminu.com"
             hrefGithub="https://github.com/Issaminu/PhoneJobing"
