@@ -27,12 +27,15 @@ const { title, body, hrefDemo, hrefGithub, stack, thumbnail } = Astro.props;
         class="rounded-lg md:w-64 md:aspect-[3.7/2] object-cover shadow-2xl silver-filter group-hover:filter-none"
         src={thumbnail}
         alt=`Screenshot of ${title} website`
-        quality="low"
+        widths={[768, 370]}
+        sizes={`(max-width: 768px) 768px,  370px`}
       />
     </a>
 
-    <div class="mt-2 md:mt-0 flex flex-col justify-between min-h-full w-full">
-      <div class="pl-2 md:pl-3">
+    <div
+      class="mt-2 ml-1 md:mt-0 flex flex-col justify-between min-h-full w-full"
+    >
+      <div class="md:pl-3">
         <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
         <p class="md:pl-1 mt-1 md:mr-3">{body}</p>
       </div>
