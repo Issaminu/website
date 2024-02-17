@@ -2,6 +2,7 @@
 import GradientBackground from "../components/GradientBackground.tsx";
 import SpeedInsights from "@vercel/speed-insights/astro";
 import { ViewTransitions } from "astro:transitions";
+import FixedNavigation from "../components/FixedNavigation.astro";
 
 interface Props {
   title: string;
@@ -36,8 +37,11 @@ const { title } = Astro.props;
     <meta name="generator" content={Astro.generator} />
     <SpeedInsights />
   </head>
-  <body>
+  <body
+    class="mb-8 relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
+  >
     <GradientBackground client:idle transition:persist />
+    <FixedNavigation />
     <slot />
     <style is:global>
       @font-face {
@@ -69,10 +73,6 @@ const { title } = Astro.props;
 
       .silver-gradient::selection {
         color: white;
-      }
-
-      .silver-filter {
-        /* filter: brightness(0.9) grayscale(20%) sepia(90%) hue-rotate(180deg); */
       }
 
       code {

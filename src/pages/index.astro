@@ -6,15 +6,13 @@ import EnsetGPT from "../assets/EnsetGPT.png";
 import PhoneJobing from "../assets/phone jobing.png";
 import SkylineApp from "../assets/skyline.png";
 import Layout from "../layouts/Layout.astro";
-import NavItem from "../components/NavItem.astro";
+import Navigation from "../components/Navigation.astro";
 import Card from "../components/Card.astro";
 ---
 
 <Layout title="Issam Boubcher">
-  <main
-    class="mx-4 mb-8 relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] gap-y-8 px-4 pt-28 sm:pt-48 xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
-  >
-    <div class="">
+  <main class="pt-20 mx-8 sm:mx-0 sm:pt-44">
+    <div class="mb-28">
       <div class="flex gap-2 lg:gap-6">
         <Image
           src={IssaminuLogo}
@@ -42,28 +40,10 @@ import Card from "../components/Card.astro";
         Welcome to my little corner of the internet! Here I chronicle my journey
         and share insights and ideas that have enriched my learning experience.
         This website serves as a hub for my portfolio of projects, my
-        reflections on the world around me, and the little gems I find on the
+        reflections the world around me, and the little gems I find on the
         internet.
       </p>
-      <div class="flex flex-row justify-start gap-4 sm:gap-8 items-center mt-6">
-        <!-- <NavItem name="Blog" icon="newspaper" href="/blog" />
-        <NavItem name="Projects" icon="code" href="/projects" /> -->
-        <NavItem
-          name="Twitter"
-          icon="twitter"
-          href="https://twitter.com/Issaminuu"
-        />
-        <NavItem
-          name="GitHub"
-          icon="github"
-          href="https://github.com/Issaminu"
-        />
-        <NavItem
-          name="LinkedIn"
-          icon="linkedin"
-          href="https://www.linkedin.com/in/issam-boubcher/"
-        />
-      </div>
+      <Navigation />
     </div>
     <div class="mt-16">
       <h2 class="text-xl font-bold text-gray-300">Latest Projects</h2>
@@ -97,19 +77,6 @@ import Card from "../components/Card.astro";
               "Vercel",
             ]}
           />
-          <!-- <Card
-            title="Mini Projet"
-            body="A simple hotel management application for a school mini-project."
-            thumbnail={MiniProjet}
-            hrefGithub="https://github.com/Issaminu/mini-projet"
-            stack={[
-              "TypeScript",
-              "React",
-              "Next.js",
-              "NextAuth.js",
-              "PostgreSQL",
-            ]}
-          /> -->
           <Card
             title="Skyline App"
             body="A living space co-ownership application for facilitating shared arrangements."
