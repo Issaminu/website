@@ -1,6 +1,7 @@
 ---
 import GradientBackground from "../components/GradientBackground.tsx";
 import SpeedInsights from "@vercel/speed-insights/astro";
+import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
@@ -31,12 +32,12 @@ const { title } = Astro.props;
       rel="icon"
       media="(prefers-color-scheme: dark)"
     />
-
+    <ViewTransitions />
     <meta name="generator" content={Astro.generator} />
     <SpeedInsights />
   </head>
   <body>
-    <GradientBackground client:idle />
+    <GradientBackground client:idle transition:persist />
     <slot />
     <style is:global>
       @font-face {
