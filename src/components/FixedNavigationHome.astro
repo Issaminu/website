@@ -1,0 +1,89 @@
+---
+import FixedNavItem from "./FixedNavItem.astro";
+import { Image } from "astro:assets";
+import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
+---
+
+<script>
+  document.addEventListener(
+    "astro:page-load",
+    function () {
+      const fixedNavbar = document.getElementById("fixed-navbar");
+      if (!fixedNavbar) return;
+
+      const navbar = document.getElementById("navbar");
+      if (!navbar) {
+        if (window.location.href == "/") {
+          return;
+        }
+      } else {
+        const navbarPosition = navbar.offsetTop + navbar.offsetHeight;
+        if (window.scrollY > navbarPosition) {
+          fixedNavbar.style.visibility = "visible";
+        } else {
+          fixedNavbar.style.visibility = "hidden";
+        }
+        addScrollListener();
+      }
+    },
+    { once: true }
+  );
+
+  function addScrollListener() {
+    window.addEventListener("scroll", function () {
+      const navbar = document.getElementById("navbar");
+      const fixedNavbar = document.getElementById("fixed-navbar");
+      if (!fixedNavbar) return;
+      let navbarPosition = -1;
+      if (navbar) {
+        navbarPosition = navbar.offsetTop + navbar.offsetHeight;
+      }
+
+      // console.log(window.scrollY, navbarPosition);
+      if (window.scrollY > navbarPosition) {
+        fixedNavbar.style.visibility = "visible";
+      } else {
+        fixedNavbar.style.visibility = "hidden";
+      }
+    });
+  }
+</script>
+
+<div
+  class="pointer-events-none sticky z-30 top-0 h-full w-full xl:w-auto xl:col-start-3"
+>
+  <div
+    id="fixed-navbar"
+    class="pointer-events-auto flex justify-between col-start-1 mt-4 rounded-2xl bg-gray-800/95 px-4 py-2.5 backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
+    style="visibility: hidden;"
+  >
+    <a href="/" target="_self" class="flex flex-row">
+      <Image
+        src={IssaminuLogo}
+        alt="Issaminu's logo"
+        class="rounded-full w-10 h-10 sm:w-8 sm:h-8"
+        format="avif"
+        loading={"eager"}
+      />
+    </a>
+    <div class="flex flex-row gap-8">
+      <FixedNavItem name="Blog" icon="newspaper" href="/blog" />
+      <!-- <NavItem name="Projects" icon="code" href="/projects" /> -->
+      <FixedNavItem
+        name="Twitter"
+        icon="twitter"
+        href="https://twitter.com/Issaminuu"
+      />
+      <FixedNavItem
+        name="GitHub"
+        icon="github"
+        href="https://github.com/Issaminu"
+      />
+      <FixedNavItem
+        name="LinkedIn"
+        icon="linkedin"
+        href="https://www.linkedin.com/in/issam-boubcher"
+      />
+    </div>
+  </div>
+</div>

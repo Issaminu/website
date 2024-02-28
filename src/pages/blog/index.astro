@@ -1,5 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
+import FixedNavigation from "../../components/FixedNavigation.astro";
 
 const page = {
   title: "About",
@@ -8,6 +9,7 @@ const page = {
 ---
 
 <Layout title="Issam Boubcher">
+  <FixedNavigation />
   <main class="pt-16 mx-8 sm:px-0">
     <div>
       <h1>{page.title}</h1>

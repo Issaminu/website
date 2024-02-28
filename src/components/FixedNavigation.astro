@@ -1,53 +1,8 @@
 ---
-import FixedNavItem from "../components/FixedNavItem.astro";
+import FixedNavItem from "./FixedNavItem.astro";
 import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
 ---
-
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const fixedNavbar = document.getElementById("fixed-navbar");
-    if (!fixedNavbar) return;
-    const navbar = document.getElementById("navbar");
-
-    if (!navbar) {
-      if (window.location.href == "/") {
-        console.log("gwgw");
-
-        return;
-      } else {
-        console.log("1111");
-        fixedNavbar.style.display = "flex";
-      }
-      console.log("33333");
-    }
-    let navbarPosition = -1;
-    if (navbar) {
-      navbarPosition = navbar.offsetTop + navbar.offsetHeight;
-    }
-    console.log("hiii");
-    if (window.scrollY > navbarPosition) {
-      fixedNavbar.style.display = "flex";
-    } else {
-      fixedNavbar.style.display = "none";
-    }
-    window.addEventListener("scroll", function () {
-      const navbar = document.getElementById("navbar");
-      const fixedNavbar = document.getElementById("fixed-navbar");
-      if (!fixedNavbar) return;
-      let navbarPosition = -1;
-      if (navbar) {
-        navbarPosition = navbar.offsetTop + navbar.offsetHeight;
-      }
-      console.log(window.scrollY, navbarPosition);
-      if (window.scrollY > navbarPosition) {
-        fixedNavbar.style.display = "flex";
-      } else {
-        fixedNavbar.style.display = "none";
-      }
-    });
-  });
-</script>
 
 <div
   class="pointer-events-none sticky z-30 top-0 h-full w-full xl:w-auto xl:col-start-3"
@@ -62,6 +17,7 @@ import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
         alt="Issaminu's logo"
         class="rounded-full w-10 h-10 sm:w-8 sm:h-8"
         format="avif"
+        loading={"eager"}
       />
     </a>
     <div class="flex flex-row gap-8">

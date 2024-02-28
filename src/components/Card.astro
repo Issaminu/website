@@ -29,6 +29,7 @@ const { title, body, hrefDemo, hrefGithub, stack, thumbnail } = Astro.props;
         alt=`Screenshot of ${title} website`
         widths={[768, 370]}
         sizes={`(max-width: 768px) 768px,  370px`}
+        loading={"eager"}
       />
     </a>
 
