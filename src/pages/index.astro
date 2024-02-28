@@ -7,7 +7,7 @@ import PhoneJobing from "../assets/phone jobing.png";
 import SkylineApp from "../assets/skyline.png";
 import Layout from "../layouts/Layout.astro";
 import Navigation from "../components/Navigation.astro";
-import Card from "../components/Card.astro";
+import ProjectCard from "../components/ProjectCard.astro";
 import FixedNavigationHome from "../components/FixedNavigationHome.astro";
 ---
 
@@ -52,7 +52,7 @@ import FixedNavigationHome from "../components/FixedNavigationHome.astro";
       <h2 class="text-xl font-bold text-gray-300">Latest Projects</h2>
       <div class="mt-4">
         <ul class="space-y-4">
-          <Card
+          <ProjectCard
             title="EnsetGPT"
             body="A CLI chatbot for conversing & asking questions about all things ENSET."
             thumbnail={EnsetGPT}
@@ -65,7 +65,7 @@ import FixedNavigationHome from "../components/FixedNavigationHome.astro";
               "Beautiful Soup",
             ]}
           />
-          <Card
+          <ProjectCard
             title="The Open Journal"
             body="An open space for anyone to express their thoughts on the internet."
             thumbnail={OpenJournal}
@@ -80,7 +80,7 @@ import FixedNavigationHome from "../components/FixedNavigationHome.astro";
               "Vercel",
             ]}
           />
-          <Card
+          <ProjectCard
             title="Skyline App"
             body="A living space co-ownership application for facilitating shared arrangements."
             thumbnail={SkylineApp}
@@ -94,7 +94,7 @@ import FixedNavigationHome from "../components/FixedNavigationHome.astro";
               "Auth0",
             ]}
           />
-          <Card
+          <ProjectCard
             title="Phone Jobing"
             body="A fully-featured telephone sales plateform for call centers."
             thumbnail={PhoneJobing}
