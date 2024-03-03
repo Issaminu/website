@@ -16,6 +16,7 @@ const isExternal = href.startsWith("https");
       target="_blank"
       class="items-center group font-semibold gap-1 transform hover:scale-105 transition-transform duration-300 flex justify-start"
     >
+      <title>{name}</title>
       <span class="text-gray-200 sm:text-gray-300 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
         <Icon
           name={icon}
@@ -32,6 +33,7 @@ const isExternal = href.startsWith("https");
       href={href}
       class="items-center group font-semibold gap-1 transform hover:scale-105 transition-transform duration-300 flex justify-start"
     >
+      <title>{name}</title>
       <span class="text-gray-200 sm:text-gray-300 group-hover:text-white flex flex-col sm:flex-row items-center sm:gap-1">
         <Icon
           name={icon}

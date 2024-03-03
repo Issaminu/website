@@ -1,31 +1,30 @@
 ---
-import Keyword from "./Keyword.astro";
+import { kv } from "@vercel/kv";
+
 interface Props {
   identifier: string;
   title: string;
   summary: string;
-  keywords: string[];
+  date: string;
 }
 
-const { identifier, title, summary, keywords } = Astro.props;
+const { identifier, title, summary, date } = Astro.props;
+const views = await kv.get<{ id: string; views: number }>(identifier);
 ---
 
 <a
   href={`/blog/${identifier}`}
-  <a
-  class="h-50 group rounded-xl shadow-lg border-2 border-sky-800/50 px-4 py-4 bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
+  class="flex flex-col border-2 border-sky-800/50 rounded-xl shadow-lg py-4 px-4 bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
 >
-  <div class="flex flex-col md:flex-row h-fit">
-    <div
-      class="mt-2 ml-1 md:mt-0 flex flex-col justify-between min-h-full w-full"
-    >
-      <div class="md:pl-3">
-        <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
-        <p class="md:pl-1 mt-1 md:mr-3">{summary}</p>
+  <div class="flex flex-col md:flex-row h-fit w-full">
+    <div class="mt-2 md:mt-0 flex flex-col justify-between min-h-full w-full">
+      <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
+      <div class="flex flex-row items-center">
+        <span class="text-gray-300/70 font-medium text-sm">{date}</span>
+        <span class="text-gray-300/50 font-bold mx-1">·</span>
+        <span class="text-gray-300/70 font-medium text-sm">{views} views</span>
       </div>
+      <p class="mt-1 md:mr-3">{summary}</p>
     </div>
-  </div>
-  <div class="flex flex-row gap-2 md:gap-1 mt-5 md:mt-3 flex-wrap">
-    {keywords.map((item) => <Keyword name={item} />)}
   </div>
 </a>

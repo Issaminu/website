@@ -6,11 +6,20 @@ import icon from "astro-icon";
 import mdx from "@astrojs/mdx";
 import { rehypeHeadingIds } from "@astrojs/markdown-remark";
 import rehypeSlug from "rehype-slug";
-import rehypeToc from "rehype-toc";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
+import rehypePrettyCode from "rehype-pretty-code";
+import silverGradientTheme from "./src/lib/silver-gradient-theme.json";
 
-// https://astro.build/config
+const rehypePrettyCodeOptions = {
+  theme: silverGradientTheme,
+  wrap: true,
+  tokensMap: {
+    fn: "entity.name.function",
+    objKey: "meta.object-literal.key",
+  },
+};
+
 export default defineConfig({
   output: "server",
   adapter: vercel({
@@ -19,37 +28,13 @@ export default defineConfig({
     },
   }),
   markdown: {
+    syntaxHighlight: false,
     rehypePlugins: [
       rehypeSlug,
+      [rehypePrettyCode, rehypePrettyCodeOptions],
       rehypeHeadingIds,
       [rehypeAutolinkHeadings, { behavior: "wrap" }],
       [rehypeExternalLinks, { target: "_blank" }],
-      [
-        rehypeToc,
-        {
-          headings: ["h1", "h2"],
-          customizeTOC(toc) {
-            return {
-              type: "element",
-              tagName: "details",
-              properties: {
-                class: "toc-wrapper",
-              },
-              children: [
-                {
-                  type: "element",
-                  tagName: "summary",
-                  properties: {
-                    class: "toc-summary",
-                  },
-                  children: [{ type: "text", value: "Table of Contents" }],
-                },
-                toc,
-              ],
-            };
-          },
-        },
-      ],
     ],
   },
   integrations: [tailwind(), react(), icon(), mdx()],

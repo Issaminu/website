@@ -1,0 +1,44 @@
+---
+import Layout from "./Layout.astro";
+import FixedNavigation from "../components/FixedNavigation.astro";
+import { kv } from "@vercel/kv";
+
+const { frontmatter } = Astro.props;
+const date = new Date(frontmatter.publishedAt).toLocaleString("en-US", {
+  month: "short",
+  day: "numeric",
+  year: "numeric",
+});
+
+await kv.incr(frontmatter.identifier);
+const views = await kv.get<{ id: string; views: number }>(
+  frontmatter.identifier
+);
+---
+
+<Layout title={`${frontmatter.title} | Issam Boubcher`}>
+  <FixedNavigation />
+  <main
+    class="mt-10 mx-8 prose prose-code:text-white prose-pre:rounded-xl even:prose-pre:rounded-t-none prose-pre:border-2 even:prose-pre:border-t-0 prose-pre:border-sky-900/50 text-white prose-img:border-r-4 prose-img:rounded-2xl marker:text-gray-200 prose-headings:text-white prose-a:prose-headings:no-underline prose-strong:text-white prose-blockquote:text-white prose-a:text-white prose-a:font-semibold prose-a:decoration-gray-400 hover:prose-a:decoration-2"
+  >
+    <h1 class="text-4xl font-bold mb-0 w-fit silver-gradient drop-shadow-2xl">
+      {frontmatter.title}
+    </h1>
+    <div class="flex flex-row items-center">
+      <span class="text-gray-300/70 font-medium text-sm">{date}</span>
+      <span class="text-gray-300/50 font-bold mx-1">·</span>
+      <span class="text-gray-300/70 font-medium text-sm">{views} views</span>
+    </div>
+    <main
+      class="prose-h1:border-t-2 prose-h1:border-sky-900/50 prose-figcaption:text-white prose-figcaption:px-2 prose-figcaption:py-1 prose-figcaption:font-semibold prose-figcaption:bg-sky-800/50 prose-figcaption:border-2 prose-figcaption:border-b-0 prose-figcaption:border-sky-900/50 prose-figcaption:rounded-lg prose-figcaption:rounded-b-none prose-h1:mt-4 prose-h1:pt-6 hover:prose-a:prose-headings:before:content-['#'] prose-a:before:absolute prose-a:before:-ml-[1em] prose-a:before:text-rose-100/0 hover:prose-a:before:text-sky-700/50 prose-a:pl-[1em] prose-a:-ml-[1em]"
+    >
+      <slot />
+    </main>
+  </main>
+</Layout>
+
+<style>
+  html {
+    cursor: auto;
+  }
+</style>
