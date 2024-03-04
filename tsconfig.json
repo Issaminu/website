@@ -4,6 +4,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "react",
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "strictNullChecks": true,
+    "allowJs": true
   }
 }

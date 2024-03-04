@@ -2,16 +2,28 @@
 import Layout from "../../layouts/Layout.astro";
 import FixedNavigation from "../../components/FixedNavigation.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
+import { getCollection } from "astro:content";
+
+const articles = await getCollection("blog");
 ---
 
 <Layout title="Issam Boubcher's Blog">
   <FixedNavigation />
-  <main class="pt-16 mx-8 sm:px-0">
-    <ArticleCard
-      title="Hello World"
-      identifier="hello-world"
-      date="Feb 24, 2024"
-      summary="This is the first post on my new blog. How exciting!"
-    />
+  <main class="pt-16 mx-8 sm:px-0 space-y-4">
+    <h2 class="text-xl font-bold text-gray-300">My Articles</h2>
+    {
+      articles.map((article) => (
+        <ArticleCard
+          title={article.data.title}
+          identifier={article.slug}
+          date={new Date(article.data.date).toLocaleString("en-US", {
+            month: "short",
+            day: "numeric",
+            year: "numeric",
+          })}
+          description={article.data.description}
+        />
+      ))
+    }
   </main>
 </Layout>

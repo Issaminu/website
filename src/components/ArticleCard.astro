@@ -4,27 +4,27 @@ import { kv } from "@vercel/kv";
 interface Props {
   identifier: string;
   title: string;
-  summary: string;
+  description: string;
   date: string;
 }
 
-const { identifier, title, summary, date } = Astro.props;
+const { identifier, title, description, date } = Astro.props;
 const views = await kv.get<{ id: string; views: number }>(identifier);
 ---
 
 <a
   href={`/blog/${identifier}`}
-  class="flex flex-col border-2 border-sky-800/50 rounded-xl shadow-lg py-4 px-4 bg-[#183f5a]/30 hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
+  class="flex flex-col border-2 border-sky-900 rounded-xl shadow-lg py-4 px-4 bg-[#183f5a] hover:bg-[#a5adb4]/10 transition duration-300 ease-in-out backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
 >
   <div class="flex flex-col md:flex-row h-fit w-full">
     <div class="mt-2 md:mt-0 flex flex-col justify-between min-h-full w-full">
-      <h2 class="text-2xl font-semibold silver-gradient">{title}</h2>
-      <div class="flex flex-row items-center">
+      <h2 class="text-2xl font-semibold silver-gradient pb-0">{title}</h2>
+      <div class="flex flex-row items-center mb-1">
         <span class="text-gray-300/70 font-medium text-sm">{date}</span>
         <span class="text-gray-300/50 font-bold mx-1">·</span>
         <span class="text-gray-300/70 font-medium text-sm">{views} views</span>
       </div>
-      <p class="mt-1 md:mr-3">{summary}</p>
+      <p class="mt-1 md:mr-3">{description}</p>
     </div>
   </div>
 </a>
