@@ -45,7 +45,7 @@ export default defineConfig({
     mdx(),
     astroOGImage({
       config: {
-        path: "/content/blog",
+        path: "content/blog",
       },
     }),
   ],
