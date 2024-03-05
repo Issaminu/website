@@ -10,7 +10,7 @@ import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
   <nav
     class="pointer-events-auto border border-sky-900/50 shadow-lg flex justify-between col-start-1 mt-4 rounded-2xl bg-gray-800/95 px-4 py-2.5 backdrop-blur will-change-transform [@supports(backdrop-filter:blur(0px))]:bg-white/[3%]"
   >
-    <a href="/" target="_self" class="flex flex-row">
+    <a href="/" target="_self">
       <Image
         src={IssaminuLogo}
         alt="Issaminu's logo"
@@ -19,7 +19,7 @@ import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
         loading={"eager"}
       />
     </a>
-    <div class="flex flex-row gap-8">
+    <div class="flex flex-row justify-end gap-4 sm:gap-8">
       <FixedNavItem name="Blog" icon="newspaper" href="/blog" />
       <!-- <NavItem name="Projects" icon="code" href="/projects" /> -->
       <FixedNavItem
