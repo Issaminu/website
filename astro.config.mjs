@@ -10,7 +10,6 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeExternalLinks from "rehype-external-links";
 import rehypePrettyCode from "rehype-pretty-code";
 import silverGradientTheme from "./src/lib/silver-gradient-theme.json";
-import astroOGImage from "astro-og-image";
 
 const rehypePrettyCodeOptions = {
   theme: silverGradientTheme,
@@ -38,15 +37,5 @@ export default defineConfig({
       [rehypeExternalLinks, { target: "_blank" }],
     ],
   },
-  integrations: [
-    tailwind(),
-    react(),
-    icon(),
-    mdx(),
-    astroOGImage({
-      config: {
-        path: "content/blog",
-      },
-    }),
-  ],
+  integrations: [tailwind(), react(), icon(), mdx()],
 });
