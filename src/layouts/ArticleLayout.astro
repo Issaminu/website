@@ -3,6 +3,8 @@ import Layout from "./Layout.astro";
 import FixedNavigation from "../components/FixedNavigation.astro";
 import { kv } from "@vercel/kv";
 
+export const prerender = true;
+
 const { frontmatter } = Astro.props;
 const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
   month: "short",
