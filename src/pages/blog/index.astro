@@ -7,7 +7,11 @@ import { getCollection } from "astro:content";
 const articles = await getCollection("blog");
 ---
 
-<Layout title="Issam Boubcher's Blog">
+<Layout
+  title="Issam Boubcher's Blog"
+  description="Issam Boubcher is a Software Engineering and Distributed Computed Systems student at ENSET."
+  thumbnail="/landing-page-thumbnail.png"
+>
   <FixedNavigation />
   <main class="pt-16 mx-8 sm:px-0 space-y-4">
     <h2 class="text-xl font-bold text-gray-300">My Articles</h2>

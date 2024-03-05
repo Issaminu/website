@@ -9,6 +9,7 @@ const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
   day: "numeric",
   year: "numeric",
 });
+const imgLink = `/og/${frontmatter.identifier}.png`;
 
 await kv.incr(frontmatter.identifier);
 const views = await kv.get<{ id: string; views: number }>(
@@ -16,7 +17,11 @@ const views = await kv.get<{ id: string; views: number }>(
 );
 ---
 
-<Layout title={`${frontmatter.title} | Issam Boubcher`}>
+<Layout
+  title={`${frontmatter.title} | Issam Boubcher`}
+  description={frontmatter.description}
+  thumbnail={imgLink}
+>
   <FixedNavigation />
   <main
     class="mt-10 mx-8 prose prose-code:text-white prose-pre:rounded-xl even:prose-pre:rounded-t-none prose-pre:border-2 even:prose-pre:border-t-0 prose-pre:border-sky-900/50 text-white prose-img:border-r-4 prose-img:rounded-2xl marker:text-gray-200 prose-headings:text-white prose-a:prose-headings:no-underline prose-strong:text-white prose-blockquote:text-white prose-a:text-white prose-a:font-semibold prose-a:decoration-gray-400 hover:prose-a:decoration-2"

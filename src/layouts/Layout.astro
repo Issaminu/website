@@ -5,9 +5,12 @@ import { ViewTransitions } from "astro:transitions";
 
 interface Props {
   title: string;
+  description: string;
+  thumbnail: string;
 }
 
-const { title } = Astro.props;
+const { title, description, thumbnail } = Astro.props;
+const url = Astro.url.href + Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -17,12 +20,26 @@ const { title } = Astro.props;
     <meta content="utf-8" http-equiv="encoding" />
     <title>{title}</title>
     <meta name="title" content={title} />
-    <meta
-      name="description"
-      content="Issam Boubcher is a Software Engineering and Distributed Computed Systems student at ENSET."
-    />
+    <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={url} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content={thumbnail} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta property="twitter:domain" content="issaminu.com" />
+    <meta property="twitter:url" content={url} />
+    <meta name="twitter:title" content={title} />
+    <meta
+      name="twitter:description"
+      content="A curated list of docs and articles that are merging the lines between static and interactive content; active and passive learning."
+    />
+    <meta name="twitter:image" content={thumbnail} />
+
     <link
       href="light-mode-favicon.ico"
       rel="icon"
