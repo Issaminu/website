@@ -1,7 +1,6 @@
 ---
 import Layout from "./Layout.astro";
 import FixedNavigation from "../components/FixedNavigation.astro";
-import { kv } from "@vercel/kv";
 
 const { frontmatter } = Astro.props;
 const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
@@ -11,12 +10,19 @@ const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
 });
 const imgLink = `/og/${frontmatter.identifier}.png`;
 
-console.log("THIS IS RUNNING THE KV FCT");
-
-await kv.incr(frontmatter.identifier);
-const views = await kv.get<{ id: string; views: number }>(
-  frontmatter.identifier
-);
+const views = await fetch(`${Astro.url.origin}/views/getViews`, {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ identifier: frontmatter.identifier }),
+})
+  .then((res) => res.json())
+  .then((data) => data.views)
+  .catch((err) => {
+    console.error(err);
+    return 0;
+  });
 ---
 
 <Layout

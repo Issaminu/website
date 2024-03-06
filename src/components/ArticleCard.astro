@@ -1,6 +1,4 @@
 ---
-import { kv } from "@vercel/kv";
-
 interface Props {
   identifier: string;
   title: string;
@@ -9,7 +7,15 @@ interface Props {
 }
 
 const { identifier, title, description, date } = Astro.props;
-const views = await kv.get<{ id: string; views: number }>(identifier);
+const views = await fetch(
+  `${Astro.url.origin}/views/getViews?identifier=${identifier}`
+)
+  .then((res) => res.json())
+  .then((data) => data.views)
+  .catch((err) => {
+    console.error(err);
+    return 0;
+  });
 ---
 
 <a
