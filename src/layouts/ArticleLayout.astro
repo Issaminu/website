@@ -9,21 +9,37 @@ const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
   year: "numeric",
 });
 const imgLink = `/og/${frontmatter.identifier}.png`;
-
-const views = await fetch(`${Astro.url.origin}/views/getViews`, {
-  method: "PATCH",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ identifier: frontmatter.identifier }),
-})
-  .then((res) => res.json())
-  .then((data) => data.views)
-  .catch((err) => {
-    console.error(err);
-    return 0;
-  });
 ---
+
+<script is:inline>
+  document.addEventListener(
+    "astro:page-load",
+    async () => {
+      const baseURL = `${window.location.protocol}//${window.location.host}`;
+      const pathname = window.location.pathname;
+      const parts = pathname.split("/");
+      const identifier = parts[parts.length - 1];
+
+      const views = await fetch(`${baseURL}/views/getArticleViews`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ identifier }),
+      })
+        .then((res) => res.json())
+        .then((data) => data.views)
+        .catch((err) => {
+          console.error(err);
+          return 0;
+        });
+
+      const viewsElement = document.getElementById(`${identifier}-views`);
+      if (viewsElement) viewsElement.textContent = `${views} views`;
+    },
+    { once: true }
+  );
+</script>
 
 <Layout
   title={`${frontmatter.title} | Issam Boubcher`}
@@ -40,7 +56,10 @@ const views = await fetch(`${Astro.url.origin}/views/getViews`, {
     <div class="flex flex-row items-center">
       <span class="text-gray-300/70 font-medium text-sm">{publishedAt}</span>
       <span class="text-gray-300/50 font-bold mx-1">·</span>
-      <span class="text-gray-300/70 font-medium text-sm">{views} views</span>
+      <span
+        id={`${frontmatter.identifier}-views`}
+        class="text-gray-300/70 font-medium text-sm">••• views</span
+      >
     </div>
     <main
       class="prose-h1:border-t-2 prose-h1:border-sky-900/50 prose-figcaption:text-white prose-figcaption:px-2 prose-figcaption:py-1 prose-figcaption:font-semibold prose-figcaption:bg-sky-800/50 prose-figcaption:border-2 prose-figcaption:border-b-0 prose-figcaption:border-sky-900/50 prose-figcaption:rounded-lg prose-figcaption:rounded-b-none prose-h1:mt-4 prose-h1:pt-6 hover:prose-a:prose-headings:before:content-['#'] prose-a:before:absolute prose-a:before:-ml-[1em] prose-a:before:text-rose-100/0 hover:prose-a:before:text-sky-700/50 prose-a:pl-[1em] prose-a:-ml-[1em]"

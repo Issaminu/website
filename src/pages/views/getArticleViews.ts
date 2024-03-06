@@ -1,6 +1,7 @@
 import { kv } from "@vercel/kv";
 import type { APIRoute } from "astro";
 
+// No longer used, using /views/getAllViews instead
 export const GET: APIRoute = async ({ request }) => {
   const url = new URL(request.url);
   const identifier = url.searchParams.get("identifier");

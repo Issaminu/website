@@ -4,8 +4,30 @@ import FixedNavigation from "../../components/FixedNavigation.astro";
 import ArticleCard from "../../components/ArticleCard.astro";
 import { getCollection } from "astro:content";
 
+export const prerender = true;
+
 const articles = await getCollection("blog");
 ---
+
+<script is:inline>
+  document.addEventListener(
+    "astro:page-load",
+    async () => {
+      const baseURL = `${window.location.protocol}//${window.location.host}`;
+      const articleViews = await fetch(`${baseURL}/views/getAllViews`)
+        .then((res) => res.json())
+        .catch((err) => {
+          console.error(err);
+          return 0;
+        });
+      articleViews.map(({ identifier, views }) => {
+        const viewsElement = document.getElementById(`${identifier}-views`);
+        if (viewsElement) viewsElement.textContent = `${views} views`;
+      });
+    },
+    { once: true }
+  );
+</script>
 
 <Layout
   title="Issam Boubcher's Blog"
