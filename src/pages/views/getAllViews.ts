@@ -2,7 +2,7 @@ import { kv } from "@vercel/kv";
 import type { APIRoute } from "astro";
 import { getCollection } from "astro:content";
 
-export const GET: APIRoute = async ({ request }) => {
+export const GET: APIRoute = async () => {
   const articles = await getCollection("blog");
 
   const articleViews = await Promise.all(
