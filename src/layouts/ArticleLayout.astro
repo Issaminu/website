@@ -11,36 +11,6 @@ const publishedAt = new Date(frontmatter.date).toLocaleString("en-US", {
 const imgLink = `/og/${frontmatter.identifier}.png`;
 ---
 
-<script is:inline>
-  document.addEventListener(
-    "astro:page-load",
-    async () => {
-      const baseURL = `${window.location.protocol}//${window.location.host}`;
-      const pathname = window.location.pathname;
-      const parts = pathname.split("/");
-      const identifier = parts[parts.length - 1];
-
-      const views = await fetch(`${baseURL}/views/getArticleViews`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ identifier }),
-      })
-        .then((res) => res.json())
-        .then((data) => data.views)
-        .catch((err) => {
-          console.error(err);
-          return 0;
-        });
-
-      const viewsElement = document.getElementById(`${identifier}-views`);
-      if (viewsElement) viewsElement.textContent = `${views} views`;
-    },
-    { once: true }
-  );
-</script>
-
 <Layout
   title={`${frontmatter.title} | Issam Boubcher`}
   description={frontmatter.description}
