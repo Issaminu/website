@@ -19,6 +19,7 @@ const { Content } = await entry.render();
   document.addEventListener(
     "astro:page-load",
     async () => {
+      console.log("fetching views for article");
       const baseURL = `${window.location.protocol}//${window.location.host}`;
       const pathname = window.location.pathname;
       const parts = pathname.split("/");

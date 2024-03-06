@@ -13,6 +13,7 @@ const articles = await getCollection("blog");
   document.addEventListener(
     "astro:page-load",
     async () => {
+      console.log("fetching views for all articles...");
       const baseURL = `${window.location.protocol}//${window.location.host}`;
       const articleViews = await fetch(`${baseURL}/views/getAllViews`)
         .then((res) => res.json())
