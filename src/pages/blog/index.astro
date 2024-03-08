@@ -10,24 +10,22 @@ const articles = await getCollection("blog");
 ---
 
 <script>
-  document.addEventListener(
-    "astro:page-load",
-    async () => {
-      console.log("fetching views for all articles...");
-      const baseURL = `${window.location.protocol}//${window.location.host}`;
-      const articleViews = (await fetch(`${baseURL}/views/getAllViews`)
-        .then((res) => res.json())
-        .catch((err) => {
-          console.error(err);
-          return 0;
-        })) as { identifier: string; views: number }[];
-      articleViews.map(({ identifier, views }) => {
-        const viewsElement = document.getElementById(`${identifier}-views`);
-        if (viewsElement) viewsElement.textContent = `${views} views`;
-      });
-    },
-    { once: true }
-  );
+  document.addEventListener("astro:page-load", async () => await getAllViews());
+
+  async function getAllViews() {
+    console.log("fetching views for all articles...");
+    const baseURL = `${window.location.protocol}//${window.location.host}`;
+    const articleViews = (await fetch(`${baseURL}/views/getAllViews`)
+      .then((res) => res.json())
+      .catch((err) => {
+        console.error(err);
+        return 0;
+      })) as { identifier: string; views: number }[];
+    articleViews.map(({ identifier, views }) => {
+      const viewsElement = document.getElementById(`${identifier}-views`);
+      if (viewsElement) viewsElement.textContent = `${views} views`;
+    });
+  }
 </script>
 
 <Layout
