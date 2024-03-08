@@ -10,7 +10,8 @@ interface Props {
 }
 
 const { title, description, thumbnail } = Astro.props;
-const url = Astro.url.href + Astro.url.pathname;
+const baseUrl = Astro.url.origin;
+const url = baseUrl + Astro.url.pathname;
 ---
 
 <!doctype html>
@@ -22,7 +23,7 @@ const url = Astro.url.href + Astro.url.pathname;
     <meta name="title" content={title} />
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+    <link rel="icon" type="image/svg+xml" href=`${baseUrl}/favicon.ico` />
 
     <meta property="og:site_name" content="Issam Boubcher" />
     <meta property="og:type" content="website" />
@@ -42,18 +43,17 @@ const url = Astro.url.href + Astro.url.pathname;
     <meta name="twitter:image" content={thumbnail} />
 
     <link
-      href="light-mode-favicon.ico"
+      href=`${baseUrl}/light-mode-favicon.ico`
       rel="icon"
       media="(prefers-color-scheme: light)"
     />
     <link
-      href="dark-mode-favicon.ico"
+      href=`${baseUrl}/dark-mode-favicon.ico`
       rel="icon"
       media="(prefers-color-scheme: dark)"
     />
     <meta name="generator" content={Astro.generator} />
     <SpeedInsights />
-    <ViewTransitions />
   </head>
   <body
     class="mb-8 relative z-10 grid grid-cols-[1fr,min(640px,100%),1fr] xl:grid-cols-[1fr,minmax(auto,240px),min(640px,100%),minmax(auto,240px),1fr] xl:gap-x-9 xl:px-0 [&>*]:col-start-2 xl:[&>*]:col-start-3"
