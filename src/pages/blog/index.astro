@@ -9,21 +9,6 @@ export const prerender = true;
 const articles = await getCollection("blog");
 ---
 
-<script type="module">
-  console.log("fetching views for all articles...");
-  const baseURL = `${window.location.protocol}//${window.location.host}`;
-  const articleViews = await fetch(`${baseURL}/views/getAllViews`)
-    .then((res) => res.json())
-    .catch((err) => {
-      console.error(err);
-      return 0;
-    });
-  articleViews.map(({ identifier, views }) => {
-    const viewsElement = document.getElementById(`${identifier}-views`);
-    if (viewsElement) viewsElement.textContent = `${views} views`;
-  });
-</script>
-
 <Layout
   title="Issam Boubcher's Blog"
   description="Issam Boubcher is a Software Engineering and Distributed Computed Systems student at ENSET."
@@ -47,4 +32,18 @@ const articles = await getCollection("blog");
       ))
     }
   </main>
+  <script type="module">
+    console.log("fetching views for all articles...");
+    const baseURL = `${window.location.protocol}//${window.location.host}`;
+    const articleViews = await fetch(`${baseURL}/views/getAllViews`)
+      .then((res) => res.json())
+      .catch((err) => {
+        console.error(err);
+        return 0;
+      });
+    articleViews.map(({ identifier, views }) => {
+      const viewsElement = document.getElementById(`${identifier}-views`);
+      if (viewsElement) viewsElement.textContent = `${views} views`;
+    });
+  </script>
 </Layout>
