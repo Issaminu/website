@@ -17,28 +17,34 @@ const { Content } = await entry.render();
 
 <ArticleLayout frontmatter={entry.data}>
   <Content />
-  <script type="module">
-    console.log("fetching views for article");
-    const baseURL = `${window.location.protocol}//${window.location.host}`;
-    const pathname = window.location.pathname;
-    const parts = pathname.split("/");
-    const identifier = parts[parts.length - 1];
+  <script data-astro-rerun is:inline>
+    document.addEventListener(
+      "astro:page-load",
+      async function () {
+        console.log("fetching views for article");
+        const baseURL = `${window.location.protocol}//${window.location.host}`;
+        const pathname = window.location.pathname;
+        const parts = pathname.split("/");
+        const identifier = parts[parts.length - 1];
 
-    const views = await fetch(`${baseURL}/views/getArticleViews`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
+        const views = await fetch(`${baseURL}/views/getArticleViews`, {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ identifier }),
+        })
+          .then((res) => res.json())
+          .then((data) => data.views)
+          .catch((err) => {
+            console.error(err);
+            return 0;
+          });
+
+        const viewsElement = document.getElementById(`${identifier}-views`);
+        if (viewsElement) viewsElement.textContent = `${views} views`;
       },
-      body: JSON.stringify({ identifier }),
-    })
-      .then((res) => res.json())
-      .then((data) => data.views)
-      .catch((err) => {
-        console.error(err);
-        return 0;
-      });
-
-    const viewsElement = document.getElementById(`${identifier}-views`);
-    if (viewsElement) viewsElement.textContent = `${views} views`;
+      { once: true }
+    );
   </script>
 </ArticleLayout>
