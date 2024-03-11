@@ -32,24 +32,21 @@ const articles = await getCollection("blog");
       ))
     }
   </main>
-  <script data-astro-rerun is:inline>
-    document.addEventListener(
-    "astro:page-load",
-    async function () {
-    console.log("fetching views for all articles...");
-    const baseURL = `${window.location.protocol}//${window.location.host}`;
-    const articleViews = await fetch(`${baseURL}/views/getAllViews`)
-      .then((res) => res.json())
-      .catch((err) => {
-        console.error(err);
-        return 0;
+  <script async data-astro-rerun is:inline>
+    async function fetchAllArticlesViews() {
+      console.log("fetching views for all articles...");
+      const baseURL = `${window.location.protocol}//${window.location.host}`;
+      const articleViews = await fetch(`${baseURL}/views/getAllViews`)
+        .then((res) => res.json())
+        .catch((err) => {
+          console.error(err);
+          return 0;
+        });
+      articleViews.map(({ identifier, views }) => {
+        const viewsElement = document.getElementById(`${identifier}-views`);
+        if (viewsElement) viewsElement.textContent = `${views} views`;
       });
-    articleViews.map(({ identifier, views }) => {
-      const viewsElement = document.getElementById(`${identifier}-views`);
-      if (viewsElement) viewsElement.textContent = `${views} views`;
-    });
-  },
-  { once: true }
-  );
+    }
+    fetchAllArticlesViews();
   </script>
 </Layout>

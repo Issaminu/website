@@ -5,30 +5,6 @@ import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
 ---
 
 <script data-astro-rerun is:inline>
-  document.addEventListener(
-    "astro:page-load",
-    function () {
-      const fixedNavbar = document.getElementById("fixed-navbar");
-      if (!fixedNavbar) return;
-
-      const navbar = document.getElementById("navbar");
-      if (!navbar) {
-        if (window.location.href == "/") {
-          return;
-        }
-      } else {
-        const navbarPosition = navbar.offsetTop + navbar.offsetHeight;
-        if (window.scrollY > navbarPosition) {
-          fixedNavbar.style.visibility = "visible";
-        } else {
-          fixedNavbar.style.visibility = "hidden";
-        }
-        addScrollListener();
-      }
-    },
-    { once: true }
-  );
-
   function addScrollListener() {
     window.addEventListener("scroll", function () {
       const navbar = document.getElementById("navbar");
@@ -46,6 +22,7 @@ import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
       }
     });
   }
+  addScrollListener();
 </script>
 
 <div
