@@ -10,7 +10,7 @@ interface Props {
 }
 
 const { title, description, thumbnail } = Astro.props;
-const baseUrl = Astro.url.origin;
+const baseUrl = process.env.BASE_URL;
 const url = baseUrl + Astro.url.pathname;
 ---
 
