@@ -28,6 +28,7 @@
   "aws": "https://aws.amazon.com",
   "azure": "https://azure.microsoft.com",
   "gcp": "https://cloud.google.com",
+  "googlecomputeengine": "https://cloud.google.com/products/compute",
   "amazons3": "https://aws.amazon.com/s3",
   "prisma": "https://www.prisma.io",
   "auth0": "https://auth0.com",
