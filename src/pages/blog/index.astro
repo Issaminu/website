@@ -33,10 +33,7 @@ const articles = await getCollection("blog");
     }
   </main>
   <script data-astro-rerun>
-    document.addEventListener("astro:page-load", fetchAllArticlesViews, {
-      once: true,
-    });
-
+    fetchAllArticlesViews();
     async function fetchAllArticlesViews() {
       console.log("fetching views for all articles...");
       const baseURL = `${window.location.protocol}//${window.location.host}`;

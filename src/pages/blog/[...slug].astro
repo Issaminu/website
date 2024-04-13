@@ -18,10 +18,7 @@ const { Content } = await entry.render();
 <ArticleLayout frontmatter={entry.data}>
   <Content />
   <script data-astro-rerun>
-    document.addEventListener("astro:page-load", fetchArticleViews, {
-      once: true,
-    });
-
+    fetchArticleViews();
     async function fetchArticleViews() {
       console.log("fetching views for article");
       const baseURL = `${window.location.protocol}//${window.location.host}`;
