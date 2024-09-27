@@ -17,7 +17,7 @@ const { Content } = await entry.render();
 
 <ArticleLayout frontmatter={entry.data}>
   <Content />
-  <script data-astro-rerun>
+  <script data-astro-rerun is:inline>
     fetchArticleViews();
     async function fetchArticleViews() {
       console.log("fetching views for article");

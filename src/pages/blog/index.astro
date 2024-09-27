@@ -32,7 +32,7 @@ const articles = await getCollection("blog");
       ))
     }
   </main>
-  <script data-astro-rerun>
+  <script data-astro-rerun is:inline>
     fetchAllArticlesViews();
     async function fetchAllArticlesViews() {
       console.log("fetching views for all articles...");
