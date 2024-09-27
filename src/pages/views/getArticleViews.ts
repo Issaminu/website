@@ -1,4 +1,4 @@
-import { kv } from "@vercel/kv";
+import { kv, kvReadOnly } from "../../../views/KVclient";
 import type { APIRoute } from "astro";
 
 // No longer used, using /views/getAllViews instead
@@ -16,7 +16,7 @@ export const GET: APIRoute = async ({ request }) => {
       }
     );
   }
-  const views = await kv.get(identifier);
+  const views = await kvReadOnly.get(identifier);
   return new Response(
     JSON.stringify({
       views: views || 0,
