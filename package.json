@@ -21,7 +21,7 @@
     "@react-three/fiber": "^8.15.14",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
-    "@types/three": "0.150.0",
+    "@types/three": "0.154.0",
     "@vercel/kv": "3.0.0",
     "@vercel/og": "^0.6.3",
     "@vercel/speed-insights": "^1.0.12",
@@ -41,7 +41,7 @@
     "remark-toc": "^9.0.0",
     "shadergradient": "^1.2.14",
     "tailwindcss": "^3.4.13",
-    "three": "0.150.0",
+    "three": "0.154.0",
     "typescript": "^5.6.2"
   },
   "devDependencies": {
