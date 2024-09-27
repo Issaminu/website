@@ -12,7 +12,7 @@ export const GET: APIRoute = async () => {
         identifier: article.slug,
         views: Number(views) || 0,
       };
-    })
+    }),
   );
 
   return new Response(JSON.stringify(articleViews));

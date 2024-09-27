@@ -13,14 +13,14 @@ export const GET: APIRoute = async ({ request }) => {
       }),
       {
         status: 400,
-      }
+      },
     );
   }
   const views = await kvReadOnly.get(identifier);
   return new Response(
     JSON.stringify({
       views: views || 0,
-    })
+    }),
   );
 };
 
@@ -35,7 +35,7 @@ export const PATCH: APIRoute = async ({ request }) => {
       }),
       {
         status: 400,
-      }
+      },
     );
   }
 
@@ -45,6 +45,6 @@ export const PATCH: APIRoute = async ({ request }) => {
   return new Response(
     JSON.stringify({
       views: views || 0,
-    })
+    }),
   );
 };

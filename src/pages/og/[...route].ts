@@ -6,7 +6,7 @@ export const prerender = true;
 const blogs = await getCollection("blog");
 
 const pages = Object.fromEntries(
-  blogs.map(({ id, slug, data }) => [id, { data, slug }])
+  blogs.map(({ id, slug, data }) => [id, { data, slug }]),
 );
 
 export const { getStaticPaths, GET } = OGImageRoute({
