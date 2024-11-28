@@ -11,7 +11,7 @@
   "laravel": "https://laravel.com",
   "shadcnui": "https://ui.shadcn.com",
   "railway": "https://railway.app",
-  "go": "https://golang.org",
+  "go": "https://go.dev",
   "typescript": "https://www.typescriptlang.org",
   "javascript": "https://www.javascript.com",
   "python": "https://www.python.org",
@@ -41,5 +41,10 @@
   "spring": "https://spring.io",
   "chromadb": "https://www.trychroma.com",
   "beautifulsoup": "https://www.crummy.com/software/BeautifulSoup/bs4/doc",
-  "openai": "https://openai.com"
+  "openai": "https://platform.openai.com",
+  "fastapi": "https://fastapi.tiangolo.com",
+  "nginx": "https://nginx.org",
+  "donutc": "https://www.a1k0n.net/2011/07/20/donut-math.html",
+  "webworkers": "https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers",
+  "websockets": "https://developer.mozilla.org/en-US/docs/Web/API/WebSockets_API"
 }

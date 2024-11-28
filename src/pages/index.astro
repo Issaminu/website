@@ -3,6 +3,8 @@ import { Image } from "astro:assets";
 import IssaminuLogo from "../assets/Issaminu Logo LIGHT.png";
 import OpenJournal from "../assets/open journal.png";
 import EnsetGPT from "../assets/EnsetGPT.png";
+import StellantisProjectManager from "../assets/Stellantis Project Manager.png";
+import DistributedDonut from "../assets/Distributed Donut.png";
 import PhoneJobing from "../assets/phone jobing.png";
 import SkylineApp from "../assets/skyline.png";
 import Layout from "../layouts/Layout.astro";
@@ -58,6 +60,32 @@ export const prerender = true;
       <h2 class="text-xl font-bold text-gray-300">Latest Projects</h2>
       <div class="mt-4">
         <ul class="space-y-4">
+          <ProjectCard
+            title="Distributed Donut"
+            body="A distributed computing system for real-time rendering and broadcasting of ASCII."
+            thumbnail={DistributedDonut}
+            hrefGithub="https://github.com/Issaminu/EnsetGPT"
+            stack={[
+              "Go",
+              "donut.c",
+              "Web Workers",
+              "WebSockets",
+            ]}
+          />
+          <ProjectCard
+            title="Stellantis Project Manager"
+            body=" A web plateform for managing vehicule simulation activities at Stellantis."
+            thumbnail={StellantisProjectManager}
+            hrefDoc="/pdf/Stellantis Project Manager Report.pdf"
+            stack={[
+             "TypeScript",
+              "React",
+              "Next.js",
+              "shadcn/ui",
+              "Prisma",
+              "Nginx",
+            ]}
+          />
           <ProjectCard
             title="EnsetGPT"
             body="A CLI chatbot for conversing & asking questions about all things ENSET."

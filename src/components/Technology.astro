@@ -5,8 +5,8 @@ interface Props {
 import { Icon } from "astro-icon/components";
 import links from "../lib/links.json";
 const { name } = Astro.props;
-const iconName = name.toLowerCase().replace(/\./g, "").replace(/\ /g, "");
-const technologies: { [key: string]: string } = links;
+const iconName = name.toLowerCase().replace(/[\. \/]/g, "");  // removes all periods, spaces, and forward slashes from the string
+const technologies: Record<string,string> = links;
 ---
 
 <a href={technologies[iconName]} target="_blank" class="w-fit inline">
