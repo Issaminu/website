@@ -1,26 +1,14 @@
-import React from "react";
-import { ShaderGradientCanvas, ShaderGradient } from "shadergradient";
-import { useEffect } from "react";
+import { ShaderGradient, ShaderGradientCanvas } from "@shadergradient/react";
 
 const GradientBackground = () => {
-  const [visibility, setVisibility] = React.useState("hidden");
-
-  // The background flashes white on page load, so we hide it until it's loaded
-  useEffect(() => {
-    setTimeout(() => {
-      setVisibility("visible");
-    }, 100);
-  });
-
   return (
     <ShaderGradientCanvas
+      pointerEvents="none"
       style={{
         position: "fixed",
         height: "110vh",
         top: 0,
         zIndex: -1,
-        visibility: visibility,
-        pointerEvents: "none",
       }}
     >
       <ShaderGradient
