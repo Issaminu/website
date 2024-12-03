@@ -1,7 +1,7 @@
 ---
 import GradientBackground from "../components/GradientBackground.tsx";
 import SpeedInsights from "@vercel/speed-insights/astro";
-import { ViewTransitions } from "astro:transitions";
+import { ClientRouter } from 'astro:transitions';
 
 interface Props {
   title: string;
@@ -53,7 +53,7 @@ const url = baseUrl + Astro.url.pathname;
       media="(prefers-color-scheme: dark)"
     />
     <meta name="generator" content={Astro.generator} />
-    <ViewTransitions />
+    <ClientRouter />
     <SpeedInsights />
   </head>
   <body
