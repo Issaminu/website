@@ -21,7 +21,7 @@ const articles = await getCollection("blog");
       articles.map((article) => (
         <ArticleCard
           title={article.data.title}
-          identifier={article.slug}
+          identifier={article.id}
           date={new Date(article.data.date).toLocaleString("en-US", {
             month: "short",
             day: "numeric",

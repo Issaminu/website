@@ -5,14 +5,12 @@ export const prerender = true;
 
 const blogs = await getCollection("blog");
 
-const pages = Object.fromEntries(
-  blogs.map(({ id, slug, data }) => [id, { data, slug }]),
-);
+const pages = Object.fromEntries(blogs.map(({ id, data }) => [id, { data }]));
 
 export const { getStaticPaths, GET } = OGImageRoute({
   param: "route",
   pages,
-  getImageOptions: async (_, { data, slug }: (typeof pages)[string]) => {
+  getImageOptions: async (_, { data }: (typeof pages)[string]) => {
     const date = new Date(data.date).toLocaleString("en-US", {
       month: "short",
       day: "numeric",
