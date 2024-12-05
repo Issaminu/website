@@ -12,12 +12,10 @@ export async function getStaticPaths() {
   }));
 }
 
-const { id } = Astro.props.entry;
 const { entry } = Astro.props;
-const post = await getEntry('blog', id);
+const post = await getEntry('blog', entry.id)!;
 const { Content } = await render(post);
 ---
-
 <ArticleLayout frontmatter={entry.data}>
   <Content />
   <script data-astro-rerun is:inline>
